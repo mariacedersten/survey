@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Опрос о торговых центрах</title><style>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Local shopping centres · Kauppakeskukset · Торговые центры</title><style>
 :root{--bg:#fafaf7;--fg:#1c1c1a;--mu:#6b6b66;--ac:#1f6f5c;--bd:#d8d8d0;--cd:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#161615;--fg:#ececE6;--mu:#9a9a92;--ac:#4cb89f;--bd:#3a3a36;--cd:#202020;color-scheme:dark}}
 html{height:100%}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.5 system-ui,sans-serif}
@@ -11,6 +11,7 @@ input.o,select,textarea{font:inherit;background:var(--bg);color:var(--fg);border
 textarea{width:100%;box-sizing:border-box}
 button{font:inherit;padding:10px 18px;border-radius:10px;border:1px solid var(--ac);background:var(--ac);color:#fff;cursor:pointer;margin:6px 6px 0 0}
 button.g{background:none;color:var(--ac)}button:disabled{opacity:.4}
+.tt{font-size:20px;font-weight:700;line-height:1.3;margin:0 0 12px}
 .bar{height:4px;background:var(--bd);border-radius:2px;margin:8px 0}.bar i{display:block;height:100%;background:var(--ac);border-radius:2px}
 </style></head><body><main id="app"></main><script>
 // Структура вопросов не зависит от языка. t: s=один ответ, m=несколько, g=матрица, x=текст; max=лимит; x=индекс «Другое»; s=набор шкалы
@@ -406,7 +407,7 @@ q:{1:{q:'به کدام مرکز خرید یا منطقه علاقه‌مندید
 
 const app=document.getElementById('app');let lang,cur=0,a={};
 const e=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function pick(){app.innerHTML='<h1>Choose your language · Valitse kieli · Выберите язык</h1>'+Object.keys(L).map(k=>`<button class="${T[k]?'':'g'}" ${T[k]?'':'disabled'} data-l="${k}">${L[k]}</button>`).join('')}
+function pick(){app.innerHTML='<div class="tt" lang="en">The Future of Local Shopping Centres: A Survey of Residents and Visitors</div><div class="tt" lang="fi">Paikallisten kauppakeskusten tulevaisuus: kysely asukkaille ja kävijöille</div><div class="tt" lang="ru">Будущее местных торговых центров: мнение жителей и посетителей</div><h2>Choose your language · Valitse kieli · Выберите язык</h2>'+Object.keys(L).map(k=>`<button class="${T[k]?'':'g'}" ${T[k]?'':'disabled'} data-l="${k}">${L[k]}</button>`).join('')}
 function intro(){const u=T[lang].ui;document.documentElement.lang=lang;document.documentElement.dir=['ar','fa','prs','ps'].includes(lang)?'rtl':'ltr';app.innerHTML=`<h1>${e(u.title)}</h1><p>${e(u.intro)}</p><button data-a="go">${e(u.start)}</button>`}
 function show(i){const t=T[lang],u=t.ui,q=Q[i],d=t.q[q.k],v=a[q.k],o=a['o'+q.k]||'';let b;
 if(q.t=='x')b=`<textarea rows="5">${e(v)}</textarea>`;
